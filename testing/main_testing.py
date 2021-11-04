@@ -3,7 +3,6 @@ sys.path.append('../')
 
 from puzzleSolver import PuzzlePiece,PuzzlePieces, Solver
 from numpy.random import uniform
-from numpy import zeros
 #--------------------------------------------------------
 # Create individual puzzle pieces then add to the puzzle
 #--------------------------------------------------------
@@ -17,15 +16,18 @@ pps.addPuzzlePieceObj(p2)
 #--------------------------------------------------------
 # Create puzzle from list of xy points
 #--------------------------------------------------------
-numPieces=6
+numPieces=50
 xy_0=uniform(0,1,size=(numPieces,2))
 xy_d=uniform(5,6,size=(numPieces,2))
 pps=PuzzlePieces()
 pps.addPuzzlePieceXYs(xy_0,xy_d)
-mySolver=Solver(pps)
+mySolver=Solver(pps,useMethod='local')
 mySolver.optimize()
+print(mySolver.solution)
+mySolver.removePieces([3,7,10])
+mySolver.optimize()
+print(mySolver.solution)
+
+# mySolver.optimize('SA')
 
 
-A=zeros((numPieces,numPieces))
-A[mySolver.ridx,mySolver.cidx]=1
-print(A)
