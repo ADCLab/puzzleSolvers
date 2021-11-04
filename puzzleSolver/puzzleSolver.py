@@ -7,12 +7,25 @@ from python_tsp.exact import solve_tsp_dynamic_programming
 
 
 
+# =================================
+# This module contains multiple classes to support optimization of unit-level 
+# tasking.  The classes are:
+#     1. PuzzlePiece
+#     2. PuzzlePieces
+#     3. PuzzleSolver
 
+# =================================
+# This class contains information about a single puzzle peice
+# initPos [x,y]: list : Current/initial position of the puzzle piece
+# desiredPos [x,y]: list : Desired
+# uid : string/numeric : A unique id to track/name puzzle pieces 
 class PuzzlePiece(object):
     def __init__(self,initPos,desiredPos,uid=None):
         self.initPos=initPos
         self.desiredPos=desiredPos
         self.uid=None
+# =================================
+# This class represents a collection of puzzle pieces.
 
 class PuzzlePieces(deque):
     def __init__(self):
@@ -72,7 +85,7 @@ def forceList(x):
         return [x]
         
 
-class Solver(object):
+class PuzzleSolver(object):
     def __init__(self,puzzlepieces=None,useMethod='SA'):   
         if isinstance(puzzlepieces, PuzzlePieces):
             self.pieces=puzzlepieces
