@@ -18,6 +18,6 @@ setup(
     keywords = "optimize puzzle solving",
     url = "https://github.com/ADCLab/puzzleSolver",
     packages=['puzzleSolver', 'testing'],
-    install_requires=['collections', 'scipy', 'numpy','python_tsp'], #external packages as dependencies
+    install_requires=['scipy', 'numpy','python_tsp'], #external packages as dependencies
     long_description=read('README.md'),
 )
